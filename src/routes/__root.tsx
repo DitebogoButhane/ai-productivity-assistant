@@ -81,20 +81,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Sage — AI Workspace Productivity Assistant" },
+      { title: "AI Workspace Productivity Assistant" },
       {
         name: "description",
         content:
           "A calm, sage-green AI workspace for summarizing meetings, planning tasks, and researching faster.",
       },
-      { property: "og:title", content: "Sage — AI Workspace Productivity Assistant" },
+      { property: "og:title", content: "AI Workspace Productivity Assistant" },
       {
         property: "og:description",
         content:
-          "Summarize meetings, plan tasks, and research faster with an AI-powered productivity workspace.",
+          "A calm, sage-green AI workspace for summarizing meetings, planning tasks, and researching faster.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "AI Workspace Productivity Assistant" },
+      { name: "twitter:description", content: "A calm, sage-green AI workspace for summarizing meetings, planning tasks, and researching faster." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/edad0797-ee2e-4280-aac2-ec6098f5bcf1/id-preview-9e7e7ec4--da94797e-4a28-4cb8-8d5b-11bb00f157dc.lovable.app-1784227089016.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/edad0797-ee2e-4280-aac2-ec6098f5bcf1/id-preview-9e7e7ec4--da94797e-4a28-4cb8-8d5b-11bb00f157dc.lovable.app-1784227089016.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
