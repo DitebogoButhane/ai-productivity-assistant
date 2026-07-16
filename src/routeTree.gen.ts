@@ -9,38 +9,155 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TaskPlannerRouteImport } from './routes/task-planner'
+import { Route as ResponsibleAiRouteImport } from './routes/responsible-ai'
+import { Route as ResearchRouteImport } from './routes/research'
+import { Route as PromptEditorRouteImport } from './routes/prompt-editor'
+import { Route as MeetingNotesRouteImport } from './routes/meeting-notes'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ApiAiRouteImport } from './routes/api/ai'
 
+const TaskPlannerRoute = TaskPlannerRouteImport.update({
+  id: '/task-planner',
+  path: '/task-planner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResponsibleAiRoute = ResponsibleAiRouteImport.update({
+  id: '/responsible-ai',
+  path: '/responsible-ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResearchRoute = ResearchRouteImport.update({
+  id: '/research',
+  path: '/research',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PromptEditorRoute = PromptEditorRouteImport.update({
+  id: '/prompt-editor',
+  path: '/prompt-editor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MeetingNotesRoute = MeetingNotesRouteImport.update({
+  id: '/meeting-notes',
+  path: '/meeting-notes',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiAiRoute = ApiAiRouteImport.update({
+  id: '/api/ai',
+  path: '/api/ai',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/prompt-editor': typeof PromptEditorRoute
+  '/research': typeof ResearchRoute
+  '/responsible-ai': typeof ResponsibleAiRoute
+  '/task-planner': typeof TaskPlannerRoute
+  '/api/ai': typeof ApiAiRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/prompt-editor': typeof PromptEditorRoute
+  '/research': typeof ResearchRoute
+  '/responsible-ai': typeof ResponsibleAiRoute
+  '/task-planner': typeof TaskPlannerRoute
+  '/api/ai': typeof ApiAiRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/meeting-notes': typeof MeetingNotesRoute
+  '/prompt-editor': typeof PromptEditorRoute
+  '/research': typeof ResearchRoute
+  '/responsible-ai': typeof ResponsibleAiRoute
+  '/task-planner': typeof TaskPlannerRoute
+  '/api/ai': typeof ApiAiRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/meeting-notes'
+    | '/prompt-editor'
+    | '/research'
+    | '/responsible-ai'
+    | '/task-planner'
+    | '/api/ai'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/meeting-notes'
+    | '/prompt-editor'
+    | '/research'
+    | '/responsible-ai'
+    | '/task-planner'
+    | '/api/ai'
+  id:
+    | '__root__'
+    | '/'
+    | '/meeting-notes'
+    | '/prompt-editor'
+    | '/research'
+    | '/responsible-ai'
+    | '/task-planner'
+    | '/api/ai'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  MeetingNotesRoute: typeof MeetingNotesRoute
+  PromptEditorRoute: typeof PromptEditorRoute
+  ResearchRoute: typeof ResearchRoute
+  ResponsibleAiRoute: typeof ResponsibleAiRoute
+  TaskPlannerRoute: typeof TaskPlannerRoute
+  ApiAiRoute: typeof ApiAiRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/task-planner': {
+      id: '/task-planner'
+      path: '/task-planner'
+      fullPath: '/task-planner'
+      preLoaderRoute: typeof TaskPlannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/responsible-ai': {
+      id: '/responsible-ai'
+      path: '/responsible-ai'
+      fullPath: '/responsible-ai'
+      preLoaderRoute: typeof ResponsibleAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/research': {
+      id: '/research'
+      path: '/research'
+      fullPath: '/research'
+      preLoaderRoute: typeof ResearchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/prompt-editor': {
+      id: '/prompt-editor'
+      path: '/prompt-editor'
+      fullPath: '/prompt-editor'
+      preLoaderRoute: typeof PromptEditorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/meeting-notes': {
+      id: '/meeting-notes'
+      path: '/meeting-notes'
+      fullPath: '/meeting-notes'
+      preLoaderRoute: typeof MeetingNotesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +165,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/ai': {
+      id: '/api/ai'
+      path: '/api/ai'
+      fullPath: '/api/ai'
+      preLoaderRoute: typeof ApiAiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  MeetingNotesRoute: MeetingNotesRoute,
+  PromptEditorRoute: PromptEditorRoute,
+  ResearchRoute: ResearchRoute,
+  ResponsibleAiRoute: ResponsibleAiRoute,
+  TaskPlannerRoute: TaskPlannerRoute,
+  ApiAiRoute: ApiAiRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
